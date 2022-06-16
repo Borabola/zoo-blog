@@ -4,7 +4,7 @@ const SelectedClientProjectsPage = () => {
     const router = useRouter();
 
     console.log("router.pathname", router.pathname);
-    console.log("router.query", router.query);
+    console.log("SelectedClientProjectsPage router.query", router.query);
 
   return (
     <div>
