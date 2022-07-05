@@ -1,20 +1,33 @@
-import Link from "next/link";
+import Head from "next/head";
+import FeaturedPosts from "../components/home-page/FeaturedPost/FeaturedPosts";
+import Hero from "../components/home-page/Hero/Hero";
+import { getFeaturedPosts } from "../lib/posts-util";
 
-const  HomePage = () => {
+const HomePage = (props) => {
   return (
-		<div>
-			<h1>The Home Page</h1>
-			<ul>
-				<li>
-					{/*"-" - http request to load this page
-					<a href="/portfolio">Portfolio</a>*/}
+    <>
+      <Head>
+        <title>Max" Blog</title>
+        <meta
+          name="description"
+          content="I post about programming and web development."
+        />
+      </Head>
+      <Hero />
+      <FeaturedPosts posts={props.posts} />
+    </>
+  );
+}
 
-					<Link href="/portfolio">Portfolio</Link>
-					<Link href="/clients">Clients</Link>
-				</li>
-			</ul>
-		</div>
-	);
-};
+export const getStaticProps = () => {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+		revalidate: 1800
+  };
+}
 
 export default HomePage;
