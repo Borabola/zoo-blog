@@ -9,16 +9,6 @@ const PostContent = ({ post }) => {
 	const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
 	const customRenderers = {
-		// img(image) {
-		//   return (
-		//     <Image
-		//       src={`/images/posts/${post.slug}/${image.src}`}
-		//       alt={image.alt}
-		//       width={600}
-		//       height={300}
-		//     />
-		//   );
-		// },
 		p(paragraph) {
 			const { node } = paragraph;
 
@@ -42,7 +32,7 @@ const PostContent = ({ post }) => {
 
 		code(code) {
 			const { className, children } = code;
-			const language = className.split("-")[1]; // className is something like language-js => We need the "js" part here
+			const language = className.split("-")[1];
 			return (
 				<SyntaxHighlighter
 					style={atomDark}

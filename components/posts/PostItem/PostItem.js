@@ -5,8 +5,7 @@ import classes from "./PostItem.module.css";
 const PostItem = (props) => {
 	const {
 		title, image, excerpt, date, slug
-	} = props.post
-	console.log("PostItem slug", slug);
+	} = props.post;
 	const formattedDate = new Date(date).toLocaleDateString("en-US", {
 		day: "numeric",
 		month: "long",

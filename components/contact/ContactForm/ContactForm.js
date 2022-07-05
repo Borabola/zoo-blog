@@ -7,7 +7,7 @@ const ContactForm = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredMessage, setEnteredMessage] = useState("");
-  const [requestStatus, setRequestStatus] = useState(); // "pending", "success", "error"
+  const [requestStatus, setRequestStatus] = useState(); 
   const [requestError, setRequestError] = useState();
 
   useEffect(() => {
@@ -23,8 +23,6 @@ const ContactForm = () => {
 
   const sendMessageHandler = async(event) => {
     event.preventDefault();
-
-    // optional: add client-side validation
 
     setRequestStatus("pending");
 

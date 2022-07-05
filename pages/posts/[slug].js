@@ -36,10 +36,6 @@ export function getStaticPaths() {
 	return {
 		paths: slugs.map((slug) => ({ params: { slug: slug } })),
 		fallback: false,
-
-		// if there are a lot of posts, and we don"t want to pregenerate them
-		paths: [],
-		fallback: "blocking"
 	};
 }
 

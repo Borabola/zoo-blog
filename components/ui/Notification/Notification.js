@@ -19,7 +19,7 @@ const Notification = ({ title, message, status }) =>  {
       <h2>{title}</h2>
       <p>{message}</p>
     </div>,
-    document.getElementById("notifications") //id in _documents
+    document.getElementById("notifications")
   );
 }
 
