@@ -4,6 +4,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Open [https://nextjs-blog-phi-murex-67.vercel.app/](https://nextjs-blog-phi-murex-67.vercel.app/) to find blog from blog-deploy branch.
 
+## Deployed meetups project
+
+Open [https://nextjs-meetups-five-sigma.vercel.app/](https://nextjs-meetups-five-sigma.vercel.app/) to find meetups project from project-summary branch.
+
 ## Getting Started
 
 First, run the development server:
