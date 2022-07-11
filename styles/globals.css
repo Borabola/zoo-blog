@@ -15,6 +15,7 @@ body {
   --color-grey-700: hsl(265, 4%, 31%);
   --color-grey-800: hsl(276, 5%, 20%);
   --color-grey-900: hsl(280, 5%, 13%);
+	--color-green-900: hsl(85, 80%, 27%);
 
   --color-primary-50: #c8b3ce;
   --color-primary-100: #a07aaa;
@@ -43,7 +44,7 @@ body {
   --size-40: 10rem;
 
   margin: 0;
-  background-color: var(--color-grey-500);
+  background-color: var(--color-green-900);
   color: #252525;
   font-family: "Roboto", sans-serif;
 }
