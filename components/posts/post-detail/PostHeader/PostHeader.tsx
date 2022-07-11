@@ -1,8 +1,9 @@
+import { FC } from "react";
 import Image from "next/image";
-
 import classes from "./PostHeader.module.css";
+import { PostHeaderProps } from "./PostHeader.types"
 
-const PostHeader = ({ title, image }) => {
+const PostHeader: FC<PostHeaderProps> = ({ title, image }) => {
 	return (
 		<header className={classes.header}>
 			<h1>{title}</h1>

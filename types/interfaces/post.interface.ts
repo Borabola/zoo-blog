@@ -3,5 +3,6 @@ export type Post = {
 	image: string,
 	excerpt: string,
 	date: string,
-	slug: string
+	slug: string,
+	content?: string,
 };

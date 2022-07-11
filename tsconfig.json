@@ -16,6 +16,7 @@
 			"esnext"
 		],
 		"allowJs": true, ///false
+		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true,
 		"strict": false,
 		"forceConsistentCasingInFileNames": true,
