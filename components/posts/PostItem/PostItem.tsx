@@ -1,11 +1,12 @@
+import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import classes from "./PostItem.module.css";
+import { Box, Typography } from "@mui/material";
+import { PostItemProps } from "./PostItem.types";
 
-const PostItem = (props) => {
-	const {
-		title, image, excerpt, date, slug
-	} = props.post;
+const PostItem: FC<PostItemProps> = ({ post } ) => {
+	const { title, image, excerpt, date, slug } = post;
 	const formattedDate = new Date(date).toLocaleDateString("en-US", {
 		day: "numeric",
 		month: "long",
@@ -19,7 +20,7 @@ const PostItem = (props) => {
 		<li className={classes.post}>
 			<Link href={linkPath}>
 				<a>
-					<div className={classes.image}>
+					<Box className={classes.image}>
 						<Image
 							src={imagePath}
 							alt={title}
@@ -27,12 +28,12 @@ const PostItem = (props) => {
 							height={200}
 							layout="responsive"
 						/>
-					</div>
-					<div className={classes.content}>
-						<h3>{title}</h3>
+					</Box>
+					<Box className={classes.content}>
+						<Typography variant="h3">{title}</Typography>
 						<time>{formattedDate}</time>
-						<p>{excerpt}</p>
-					</div>
+						<Typography>{excerpt}</Typography>
+					</Box>
 				</a>
 			</Link>
 		</li>

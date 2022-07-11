@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Deployed blog project
 
-Open [https://nextjs-blog-phi-murex-67.vercel.app/](https://nextjs-blog-phi-murex-67.vercel.app/) to find blog from blog-deploy branch.
+Open [https://nextjs-blog-olgasokolova.vercel.app/](https://nextjs-blog-olgasokolova.vercel.app/) to find blog from zoo-blog branch.
 
 ## Deployed meetups project
 
