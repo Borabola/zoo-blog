@@ -7,11 +7,8 @@ const HomePage = (props) => {
   return (
 		<>
 			<Head>
-				<title>Max&apos; Blog</title>
-				<meta
-					name="description"
-					content="I post about programming and web development."
-				/>
+				<title>Mykolaiv Zoo Blog</title>
+				<meta name="description" content="News and articles of Mykolaiv Zoo" />
 			</Head>
 			<Hero />
 			<FeaturedPosts posts={props.posts} />
