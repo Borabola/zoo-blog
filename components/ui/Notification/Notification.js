@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import classes from "./notification.module.css";
+import classes from "./Notification.module.css";
 
 const Notification = ({ title, message, status }) =>  {
   let statusClasses = "";
