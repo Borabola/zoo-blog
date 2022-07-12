@@ -1,7 +1,8 @@
+import { FC } from "react";
 import Head from "next/head";
 import ContactForm from "../components/contact/ContactForm/ContactForm";
 
-const ContactPage = () => {
+const ContactPage: FC = () => {
   return (
     <>
       <Head>

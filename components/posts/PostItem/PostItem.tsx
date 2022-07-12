@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import classes from "./PostItem.module.css";
 import { Box, Typography } from "@mui/material";
-import { PostItemProps } from "./PostItem.types";
+import { PostItem } from "../../../types";
 
-const PostItem: FC<PostItemProps> = ({ post } ) => {
+const PostItem: FC<PostItem> = ({ post } ) => {
 	const { title, image, excerpt, date, slug } = post;
 	const formattedDate = new Date(date).toLocaleDateString("en-US", {
 		day: "numeric",

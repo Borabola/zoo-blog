@@ -1,8 +1,11 @@
+import { FC } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
+import { ContextParams, PostItem } from "types";
 import PostContent from "../../components/posts/post-detail/PostContent/PostContent";
 import { getPostData, getPostsFiles } from "../../lib/posts-util";
 
-const PostDetailPage = (props) => {
+const PostDetailPage: FC<PostItem> = (props) => {
 	return (
 		<>
 			<Head>
@@ -14,7 +17,7 @@ const PostDetailPage = (props) => {
 	);
 }
 
-export function getStaticProps(context) {
+export const getStaticProps: GetStaticProps<PostItem, ContextParams> = (context) => {
 	const { params } = context;
 	const { slug } = params;
 
@@ -28,7 +31,7 @@ export function getStaticProps(context) {
 	};
 }
 
-export function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = () => {
 	const postFilenames = getPostsFiles();
 
 	const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));

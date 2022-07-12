@@ -1,6 +1,8 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import { MongoClient } from "mongodb";
+import { Message } from "types";
 
-const handler = async(req, res) => {
+const handler = async(req: NextApiRequest, res: NextApiResponse ) => {
   if (req.method === "POST") {
     const { email, name, message } = req.body;
 
@@ -16,7 +18,8 @@ const handler = async(req, res) => {
       return;
     }
 
-    const newMessage = {
+    const newMessage: Message = {
+			id: null,
       email,
       name,
       message,
@@ -48,7 +51,7 @@ const handler = async(req, res) => {
 
     res
       .status(201)
-      .json({ message: "Successfully stored message!", message: newMessage });
+      .json({ message: "Successfully stored message!" });
   }
 }
 

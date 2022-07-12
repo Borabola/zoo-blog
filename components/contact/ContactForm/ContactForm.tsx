@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
+import { StatusEnum } from "types";
 import classes from "./ContactForm.module.css";
 import Notification from "../../ui/Notification/Notification";
 import { sendContactData } from "./ContactForm.utils";
@@ -7,11 +8,11 @@ const ContactForm = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredMessage, setEnteredMessage] = useState("");
-  const [requestStatus, setRequestStatus] = useState(); 
-  const [requestError, setRequestError] = useState();
+  const [requestStatus, setRequestStatus] = useState<null | StatusEnum>(null);
+  const [requestError, setRequestError] = useState<null | string>(null);
 
   useEffect(() => {
-    if (requestStatus === "success" || requestStatus === "error") {
+    if (requestStatus === StatusEnum.SUCCESS || requestStatus === StatusEnum.ERROR) {
       const timer = setTimeout(() => {
         setRequestStatus(null);
         setRequestError(null);
@@ -21,10 +22,10 @@ const ContactForm = () => {
     }
   }, [requestStatus]);
 
-  const sendMessageHandler = async(event) => {
+  const sendMessageHandler = async(event: SyntheticEvent) => {
     event.preventDefault();
 
-    setRequestStatus("pending");
+    setRequestStatus(StatusEnum.PENDING);
 
     try {
       await sendContactData({
@@ -32,19 +33,19 @@ const ContactForm = () => {
         name: enteredName,
         message: enteredMessage,
       });
-      setRequestStatus("success");
+      setRequestStatus(StatusEnum.SUCCESS);
       setEnteredMessage("");
       setEnteredEmail("");
       setEnteredName("");
     } catch (error) {
       setRequestError(error.message);
-      setRequestStatus("error");
+      setRequestStatus(StatusEnum.ERROR);
     }
   }
 
   let notification;
 
-  if (requestStatus === "pending") {
+  if (requestStatus === StatusEnum.PENDING) {
     notification = {
       status: "pending",
       title: "Sending message...",
@@ -52,7 +53,7 @@ const ContactForm = () => {
     };
   }
 
-  if (requestStatus === "success") {
+  if (requestStatus === StatusEnum.SUCCESS) {
     notification = {
       status: "success",
       title: "Success!",
@@ -60,7 +61,7 @@ const ContactForm = () => {
     };
   }
 
-  if (requestStatus === "error") {
+  if (requestStatus === StatusEnum.ERROR) {
     notification = {
       status: "error",
       title: "Error!",
@@ -98,7 +99,7 @@ const ContactForm = () => {
           <label htmlFor="message">Your Message</label>
           <textarea
             id="message"
-            rows="5"
+            rows={5}
             required
             value={enteredMessage}
             onChange={(event) => setEnteredMessage(event.target.value)}

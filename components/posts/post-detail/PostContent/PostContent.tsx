@@ -6,14 +6,13 @@ import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
 import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
 import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import PostHeader from "../PostHeader/PostHeader";
-
-import { PostContentProps} from "./PostContent.types";
+import { PostItem } from "types";
 import classes from "./PostContent.module.css";
 
 SyntaxHighlighter.registerLanguage("js", js)
 SyntaxHighlighter.registerLanguage("css", css);
 
-const PostContent: FC<PostContentProps> = ({ post }) => {
+const PostContent: FC<PostItem> = ({ post }) => {
 	const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
 	const customRenderers: {[nodeType: string]: ElementType} = {

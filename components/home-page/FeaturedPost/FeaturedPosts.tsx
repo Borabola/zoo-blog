@@ -1,7 +1,10 @@
+import { FC } from "react";
+import { PostsProps } from "types";
 import PostsGrid from "../../posts/PostsGrid/PostsGrid";
 import classes from "./FeaturedPosts.module.css";
 
-function FeaturedPosts({ posts }) {
+
+const FeaturedPosts: FC<PostsProps> = ({ posts }) => {
 	return (
 		<section className={classes.latest}>
 			<h2>Featured Posts</h2>

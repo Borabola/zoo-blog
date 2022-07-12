@@ -1,4 +1,7 @@
-export const sendContactData = async (contactDetails) => {
+import { ContactFormContent } from "./ContactForm.types"
+
+export const sendContactData = async (contactDetails: ContactFormContent
+	) => {
 	const response = await fetch("/api/contact", {
 		method: "POST",
 		body: JSON.stringify(contactDetails),

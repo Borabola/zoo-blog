@@ -1,8 +1,11 @@
+import { FC } from "react";
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import { PostsProps, ContextParams } from "types";
 import AllPosts from "../../components/posts/AllPosts/AllPosts";
 import { getAllPosts } from "../../lib/posts-util";
 
-const AllPostsPage = ({ posts }) => {
+const AllPostsPage: FC<PostsProps> = ({ posts }) => {
 	return (
 		<>
 			<Head>
@@ -17,7 +20,7 @@ const AllPostsPage = ({ posts }) => {
 	);
 };
 
-export const getStaticProps = () =>  {
+export const getStaticProps: GetStaticProps<PostsProps, ContextParams> = () =>  {
   const allPosts = getAllPosts();
 
   return {
