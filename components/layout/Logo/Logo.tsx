@@ -1,8 +1,13 @@
 import { FC } from "react";
+import { useIntl } from "react-intl";
 import classes from "./Logo.module.css";
 
 const Logo: FC = () => {
-  return <div className={classes.logo}> Mykolaiv Zoo Blog</div>;
+	const intl = useIntl();
+	return <div className={classes.logo}> {intl.formatMessage({
+		id: "mykolaivZooBlog",
+		defaultMessage: "Mykolaiv Zoo Blog"
+	})}</div>;
 }
 
 export default Logo;
