@@ -1,16 +1,23 @@
-import { useState, useEffect, SyntheticEvent } from "react";
-import { StatusEnum } from "types";
-import classes from "./ContactForm.module.css";
+import { useState, useEffect } from "react";
+import { Box, Button } from "@mui/material";
+import { StatusEnum, Message } from "types";
+import { FormikHelpers } from "formik";
+import { FormFieldText } from "../../../components/ui/FormFieldText/FormFieldText";
+import { Form, Formik } from "formik";
 import Notification from "../../ui/Notification/Notification";
 import { sendContactData } from "./ContactForm.utils";
+import { contactFormStyles } from "./ContactFom.styles";
 
 const ContactForm = () => {
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredMessage, setEnteredMessage] = useState("");
   const [requestStatus, setRequestStatus] = useState<null | StatusEnum>(null);
   const [requestError, setRequestError] = useState<null | string>(null);
 
+	const initialValues: Message = {
+		id: null,
+		email: "",
+		name: "",
+		message: "",
+	}
   useEffect(() => {
     if (requestStatus === StatusEnum.SUCCESS || requestStatus === StatusEnum.ERROR) {
       const timer = setTimeout(() => {
@@ -22,25 +29,27 @@ const ContactForm = () => {
     }
   }, [requestStatus]);
 
-  const sendMessageHandler = async(event: SyntheticEvent) => {
-    event.preventDefault();
+
+  const sendMessageHandler = async(
+		values: Message, form: FormikHelpers<Message>
+	) => {
 
     setRequestStatus(StatusEnum.PENDING);
 
     try {
       await sendContactData({
-        email: enteredEmail,
-        name: enteredName,
-        message: enteredMessage,
-      });
+        email: values.email,
+        name: values.name,
+        message: values.message,
+      }
+);
       setRequestStatus(StatusEnum.SUCCESS);
-      setEnteredMessage("");
-      setEnteredEmail("");
-      setEnteredName("");
     } catch (error) {
       setRequestError(error.message);
       setRequestStatus(StatusEnum.ERROR);
     }
+
+		form.setSubmitting(false);
   }
 
   let notification;
@@ -70,46 +79,59 @@ const ContactForm = () => {
   }
 
   return (
-    <section className={classes.contact}>
+    <Box sx={contactFormStyles.contact}>
       <h1>How can I help you?</h1>
-      <form className={classes.form} onSubmit={sendMessageHandler}>
-        <div className={classes.controls}>
-          <div className={classes.control}>
-            <label htmlFor="email">Your Email</label>
-            <input
-              type="email"
-              id="email"
-              required
-              value={enteredEmail}
-              onChange={(event) => setEnteredEmail(event.target.value)}
-            />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="name">Your Name</label>
-            <input
-              type="text"
-              id="name"
-              required
-              value={enteredName}
-              onChange={(event) => setEnteredName(event.target.value)}
-            />
-          </div>
-        </div>
-        <div className={classes.control}>
-          <label htmlFor="message">Your Message</label>
-          <textarea
-            id="message"
-            rows={5}
-            required
-            value={enteredMessage}
-            onChange={(event) => setEnteredMessage(event.target.value)}
-          ></textarea>
-        </div>
+      	<Formik
+					initialValues={initialValues}
+					validateOnBlur={false}
+					//validationSchema={validateShema}
+					onSubmit={sendMessageHandler}
+				>
+					{({
+						isSubmitting
+					}) => (
+						<Form>
+			 				<Box sx={contactFormStyles.controls}>
 
-        <div className={classes.actions}>
-          <button>Send Message</button>
-        </div>
-      </form>
+							<FormFieldText
+									sx={contactFormStyles.control}
+									name="email"
+									title="Email"
+									placeholder="Email"
+								/>
+							<FormFieldText
+								sx={contactFormStyles.control}
+								name="name"
+								title="Name"
+								placeholder="Name"
+							/>
+						</Box>
+							<FormFieldText
+								sx={contactFormStyles.control}
+								name="message"
+								title="Message"
+								placeholder="Message"
+								multiline
+								minRows={3}
+          			maxRows={4} />
+        <Box sx={contactFormStyles.actions}>
+					<Button
+						//sx={styles.editBtn}
+						color="primary"
+						type="submit"
+						variant="contained"
+						disabled={isSubmitting}
+					>
+						Send Message
+						{/*{intl.formatMessage({
+							id: "admin.save",
+							defaultMessage: "Save"
+						})}*/}
+					</Button>
+        </Box>
+      </Form>
+			)}
+			</Formik>
       {notification && (
         <Notification
           status={notification.status}
@@ -117,7 +139,7 @@ const ContactForm = () => {
           message={notification.message}
         />
       )}
-    </section>
+    </Box>
   );
 }
 

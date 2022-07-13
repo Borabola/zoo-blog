@@ -1,5 +1,3 @@
-export type ContactFormContent = {
-	email: string,
-	name: string,
-	message: string,
-}
+import { Message } from "types";
+
+export type ContactFormContent = Omit<Message, "id">;
