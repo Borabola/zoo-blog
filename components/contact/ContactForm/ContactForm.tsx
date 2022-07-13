@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
+import { useIntl } from "react-intl";
 import { StatusEnum, Message } from "types";
 import { FormikHelpers } from "formik";
 import { FormFieldText } from "../../../components/ui/FormFieldText/FormFieldText";
@@ -9,6 +10,7 @@ import { sendContactData } from "./ContactForm.utils";
 import { contactFormStyles } from "./ContactFom.styles";
 
 const ContactForm = () => {
+	const intl = useIntl();
   const [requestStatus, setRequestStatus] = useState<null | StatusEnum>(null);
   const [requestError, setRequestError] = useState<null | string>(null);
 
@@ -122,11 +124,10 @@ const ContactForm = () => {
 						variant="contained"
 						disabled={isSubmitting}
 					>
-						Send Message
-						{/*{intl.formatMessage({
-							id: "admin.save",
-							defaultMessage: "Save"
-						})}*/}
+						{intl.formatMessage({
+							id: "sendMessage",
+							defaultMessage: "Send Message"
+						})}
 					</Button>
         </Box>
       </Form>
