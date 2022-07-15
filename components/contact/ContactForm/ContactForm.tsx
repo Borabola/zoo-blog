@@ -1,19 +1,27 @@
-import { useState, useEffect } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { useMemo } from "react";
+import { Box, Typography } from "@mui/material";
 import { useIntl } from "react-intl";
-import { StatusEnum, Message } from "types";
-import { FormikHelpers } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
+import { Message } from "types";
+import { Button } from "../../../components/ui/Button/Button";
+import { useEnqueueSnackbar } from "../../../hooks/useEnqueueSnackbar/useEnqueueSnackbar";
 import { FormFieldText } from "../../../components/ui/FormFieldText/FormFieldText";
-import { Form, Formik } from "formik";
-import Notification from "../../ui/Notification/Notification";
+import { getIntlTexts } from "./ContactForm.text";
 import { validateShema } from "./ContactForm.schema";
 import { sendContactData } from "./ContactForm.utils";
 import { contactFormStyles } from "./ContactFom.styles";
 
 const ContactForm = () => {
 	const intl = useIntl();
-	const [requestStatus, setRequestStatus] = useState<null | StatusEnum>(null);
-	const [requestError, setRequestError] = useState<null | string>(null);
+	const {
+		enqueueSnackbarInfo,
+		enqueueSnackbarError,
+		enqueueSnackbarSuccess,
+	} = useEnqueueSnackbar();
+	const msg = useMemo(
+		() => getIntlTexts(intl),
+		[intl]
+	);
 
 	const initialValues: Message = {
 		id: null,
@@ -21,24 +29,10 @@ const ContactForm = () => {
 		name: "",
 		message: "",
 	}
-	useEffect(() => {
-		if (requestStatus === StatusEnum.SUCCESS || requestStatus === StatusEnum.ERROR) {
-			const timer = setTimeout(() => {
-				setRequestStatus(null);
-				setRequestError(null);
-			}, 3000);
-
-			return () => clearTimeout(timer);
-		}
-	}, [requestStatus]);
-
-
 	const sendMessageHandler = async (
 		values: Message, form: FormikHelpers<Message>
 	) => {
-
-		setRequestStatus(StatusEnum.PENDING);
-
+		enqueueSnackbarInfo(msg.sentInfo);
 		try {
 			await sendContactData({
 				email: values.email,
@@ -46,39 +40,13 @@ const ContactForm = () => {
 				message: values.message,
 			}
 			);
-			setRequestStatus(StatusEnum.SUCCESS);
+			enqueueSnackbarSuccess(msg.sentSuccess);
+			form.resetForm();
 		} catch (error) {
-			setRequestError(error.message);
-			setRequestStatus(StatusEnum.ERROR);
+			enqueueSnackbarError(msg.sentError);
 		}
 
 		form.setSubmitting(false);
-	}
-
-	let notification;
-
-	if (requestStatus === StatusEnum.PENDING) {
-		notification = {
-			status: "pending",
-			title: "Sending message...",
-			message: "Your message is on its way!",
-		};
-	}
-
-	if (requestStatus === StatusEnum.SUCCESS) {
-		notification = {
-			status: "success",
-			title: "Success!",
-			message: "Message sent successfully!",
-		};
-	}
-
-	if (requestStatus === StatusEnum.ERROR) {
-		notification = {
-			status: "error",
-			title: "Error!",
-			message: requestError,
-		};
 	}
 
 	return (
@@ -100,7 +68,6 @@ const ContactForm = () => {
 				}) => (
 					<Form>
 						<Box sx={contactFormStyles.controls}>
-
 							<FormFieldText
 								sx={contactFormStyles.control}
 								name="email"
@@ -124,11 +91,11 @@ const ContactForm = () => {
 							maxRows={4} />
 						<Box sx={contactFormStyles.actions}>
 							<Button
-								//sx={styles.editBtn}
 								color="primary"
 								type="submit"
 								variant="contained"
 								disabled={isSubmitting}
+								isLoading={isSubmitting}
 							>
 								{intl.formatMessage({
 									id: "sendMessage",
@@ -139,13 +106,6 @@ const ContactForm = () => {
 					</Form>
 				)}
 			</Formik>
-			{notification && (
-				<Notification
-					status={notification.status}
-					title={notification.title}
-					message={notification.message}
-				/>
-			)}
 		</Box>
 	);
 }

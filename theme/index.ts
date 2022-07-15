@@ -30,7 +30,6 @@ export const theme = createTheme({
 		},
 		background: {
 			default: "#dfdbe6",
-			//paper: "#dfdbe6",
 		},
 		common: {
 			white: "#FFFFFF",
@@ -124,13 +123,26 @@ theme.components = {
 			root: {
 				borderRadius: theme.spacing(2 / 8),
 				whiteSpace: "nowrap",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
 				boxShadow: "none",
-
+				fontSize: 24,
+				fontWeight: 700,
 				padding: theme.spacing(
 					0,
 					11 / 8
 				),
 				textTransform: "none",
+				"&:disabled": {
+					opacity: 0.24,
+				},
+				"&:hover": {
+					backgroundColor: "secondary.light", //"secondary.light",
+				},
+				"&:focus": {
+					backgroundColor: "secondary.light",
+				}
 			},
 			sizeLarge: {
 				minWidth: 100,

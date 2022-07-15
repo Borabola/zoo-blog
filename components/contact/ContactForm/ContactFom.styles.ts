@@ -3,7 +3,7 @@ import {Theme} from "@mui/material";
 export const contactFormStyles =  {
 	contact: {
 		margin: (theme: Theme) => theme.spacing(
-			1,
+			4,
 			"auto"
 		),
 		borderRadius: (theme: Theme) => theme.spacing( 6 / 8),
@@ -22,14 +22,15 @@ export const contactFormStyles =  {
 	},
 	controls:  {
 		display: "flex",
-    columnGap: "1rem"
+    columnGap: (theme: Theme) => theme.spacing(2),
 	},
 	control: {
 		flex: 1,
-  	minWidth: "10rem"
+  	minWidth: (theme: Theme) => theme.spacing(20),
 	},
 	actions: {
-  marginTop: (theme: Theme) => theme.spacing( 4 / 8),
-  textAlign: "right",
-}
+		marginTop: (theme: Theme) => theme.spacing(0.5),
+		display: "flex",
+		justifyContent: "end"
+	}
 };

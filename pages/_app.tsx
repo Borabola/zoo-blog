@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@mui/material/styles";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { theme } from "../theme";
 import AppIntlProvider from "../hoc/AppIntlProvider"
 import "../styles/globals.css";
@@ -11,6 +13,18 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
 		<AppIntlProvider>
 			<ThemeProvider theme={theme}>
+				<SnackbarProvider
+							maxSnack={5}
+							anchorOrigin={{
+								vertical: "bottom",
+								horizontal: "center",
+							}}
+							preventDuplicate
+							iconVariant={{
+								error: <ErrorOutlineIcon style={{ color: "#fff", marginRight: "8px" }} />
+							}}
+							autoHideDuration={3000}
+						>
 				<Layout>
 					<Head>
 						<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +33,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
 					</Head>
 					<Component {...pageProps} />
 				</Layout>
+				</SnackbarProvider>
 			</ThemeProvider>
 		</AppIntlProvider>
 	);
