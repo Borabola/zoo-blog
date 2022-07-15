@@ -1,9 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import classes from "./PostItem.module.css";
 import { Box, Typography } from "@mui/material";
 import { PostItem } from "../../../types";
+import { postItemStyles as styles } from "./PostItem.styles"
 
 const PostItem: FC<PostItem> = ({ post } ) => {
 	const { title, image, excerpt, date, slug } = post;
@@ -17,26 +17,26 @@ const PostItem: FC<PostItem> = ({ post } ) => {
 	const linkPath = `/posts/${slug}`;
 
 	return (
-		<li className={classes.post}>
-			<Link href={linkPath}>
-				<a>
-					<Box className={classes.image}>
-						<Image
-							src={imagePath}
-							alt={title}
-							width={300}
-							height={200}
-							layout="responsive"
-						/>
-					</Box>
-					<Box className={classes.content}>
-						<Typography variant="h3">{title}</Typography>
-						<time>{formattedDate}</time>
-						<Typography>{excerpt}</Typography>
-					</Box>
-				</a>
-			</Link>
-		</li>
+		<Box sx={styles.post} key={title}>
+				<Link href={linkPath}>
+					<a>
+						<Box sx={styles.image}>
+							<Image
+								src={imagePath}
+								alt={title}
+								width={300}
+								height={200}
+								layout="responsive"
+							/>
+						</Box>
+						<Box sx={styles.content}>
+							<Typography variant="h3" mb={1}>{title}</Typography>
+							<time>{formattedDate}</time>
+							<Typography mt={2} mb={1}>{excerpt}</Typography>
+						</Box>
+					</a>
+				</Link>
+		</Box>
 	);
 };
 

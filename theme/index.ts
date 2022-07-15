@@ -1,26 +1,36 @@
 import { createTheme, darken } from "@mui/material/styles";
 
+const fonts = {
+	Roboto: "Roboto, sans-serif",
+	Oswald: "Oswald, sans-serif"
+};
+
 export const theme = createTheme({
+	typography: {
+		fontFamily: fonts.Roboto
+	},
 	palette: {
 		primary: {
 			main: "#f4effa", //white text
 			dark: "#221f23", // black bg
 			light: "rgba(0, 0, 0, 0.2)",
+			contrastText: "#343036",
 		},
 		secondary: {
 			main: "#EBEBEB", //var(--color-primary-700);
 			light: "#5a097a", //var(--color-primary-500);
 			dark: "#BCBCBC",
+			contrastText: "#a7a3ae",
 		},
 		info: {
 			main: "#3d0264",
 			light: "#c8b3ce",
 			dark: "#918d96",
-			//contrastText: "#293780",
+			contrastText: "hsl(265, 7%, 70%)",
 		},
 		background: {
 			default: "#dfdbe6",
-			paper: "#343036",
+			//paper: "#dfdbe6",
 		},
 		common: {
 			white: "#FFFFFF",
@@ -33,24 +43,37 @@ theme.typography.h1 = {
 	fontSize: 64,
 	lineHeight: 1.5,
 	fontWeight: 700,
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 45,
+	},
 };
 
 theme.typography.h2 = {
+	fontFamily: fonts.Oswald,
 	fontSize: 32,
 	lineHeight: 1.5,
 	fontWeight: 700,
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 20,
+	},
 };
 
 theme.typography.h3 = {
 	fontSize: 24,
 	lineHeight: 1.5,
 	fontWeight: 700,
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 18,
+	},
 };
 
 theme.typography.h4 = {
 	fontSize: 20,
 	lineHeight: 1.5,
 	fontWeight: 500,
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 18,
+	},
 };
 
 theme.components = {
@@ -210,11 +233,11 @@ theme.components = {
 			}
 		}
 	},
-
 	MuiPaper: {
 		styleOverrides: {
 			root: {
-				backgroundColor: theme.palette.background.paper
+				backgroundColor: theme.palette.background.default,
+				borderRadius: theme.spacing(6 / 8),
 			}
 		}
 	},

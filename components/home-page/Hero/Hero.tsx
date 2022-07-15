@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { Box, Typography } from "@mui/material";
-import classes from "./Hero.module.css";
+import { useIntl } from "react-intl";
+import { heroStyles as styles } from "./Hero.styles";
 
-const Hero = () =>  {
-  return (
-		<Box className={classes.hero}>
-			<Box className={classes.image}>
+const Hero = () => {
+	const intl = useIntl();
+	return (
+		<Box sx={styles.hero}>
+			<Box sx={styles.image}>
 				<Image
 					src="/images/site/zoo_logo.png"
 					alt="Mykolaiv zoo"
@@ -13,9 +15,28 @@ const Hero = () =>  {
 					height={240}
 				/>
 			</Box>
-			<Typography variant="h1" >Mykolaiv Zoo Blog</Typography>
-			<Typography variant="body1">The blog about animals and our Zoo</Typography>
-		</Box>
+			<Typography
+				variant="h1" sx={{
+					...styles.text,
+					...styles.title
+				}}>
+				{intl.formatMessage({
+					id: "mykolaivZooBlog",
+					defaultMessage: "Mykolaiv Zoo Blog"
+				})}
+			</Typography>
+			<Typography
+				variant="h3"
+				sx={{
+					...styles.text,
+					...styles.description
+				}}>
+				{intl.formatMessage({
+					id: "blogDescription",
+					defaultMessage: "The blog about animals and our Zoo"
+				})}
+			</Typography>
+		</Box >
 	);
 }
 

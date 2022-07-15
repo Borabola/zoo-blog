@@ -1,39 +1,40 @@
 import { FC } from "react";
 import Link from "next/link";
 import { useIntl } from "react-intl";
+import { Box, MenuList, MenuItem } from "@mui/material";
 import Logo from "../Logo/Logo";
 import classes from "./MainNavigation.module.css";
+import { navigationStyles as styles } from "./MainNavigation.styles"
+
 
 const MainNavigation: FC = () => {
 	const intl = useIntl();
 	return (
-		<header className={classes.header}>
+		<Box sx={styles.header}>
 			<Link href="/">
 				<a>
 					<Logo />
 				</a>
 			</Link>
-			<nav>
-				<ul>
-					<li>
+				<MenuList sx={styles.menu}>
+					<MenuItem sx={styles.item}>
 						<Link href="/posts">
 							{intl.formatMessage({
 								id: "posts",
 								defaultMessage: "Posts"
 							})}
 						</Link>
-					</li>
-					<li>
+					</MenuItem>
+					<MenuItem sx={styles.item}>
 						<Link href="/contact">
 							{intl.formatMessage({
 								id: "contact",
 								defaultMessage: "Contact"
 							})}
 						</Link>
-					</li>
-				</ul>
-			</nav>
-		</header>
+					</MenuItem>
+				</MenuList>
+		</Box>
 	);
 };
 

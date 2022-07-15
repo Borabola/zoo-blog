@@ -1,15 +1,15 @@
 import { FC } from "react";
+import { Box, Typography } from "@mui/material";
 import { PostsProps } from "types";
 import PostsGrid from "../../posts/PostsGrid/PostsGrid";
-import classes from "./FeaturedPosts.module.css";
-
+import { featuredPostStyles as styles } from "./FeaturedPosts.styles";
 
 const FeaturedPosts: FC<PostsProps> = ({ posts }) => {
 	return (
-		<section className={classes.latest}>
-			<h2>Featured Posts</h2>
+		<Box sx={styles.latest}>
+			<Typography variant="h1" sx={styles.featuredTitle}>Featured Posts</Typography>
 			<PostsGrid posts={posts} />
-		</section>
+		</Box>
 	);
 }
 

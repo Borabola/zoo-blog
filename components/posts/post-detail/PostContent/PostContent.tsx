@@ -1,5 +1,6 @@
 import { FC, ElementType } from "react";
 import Image from "next/image";
+import { Box, Paper } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
@@ -8,6 +9,7 @@ import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import PostHeader from "../PostHeader/PostHeader";
 import { PostItem } from "types";
 import classes from "./PostContent.module.css";
+import { postContentStyles as styles } from "./PostContent.styles";
 
 SyntaxHighlighter.registerLanguage("js", js)
 SyntaxHighlighter.registerLanguage("css", css);
@@ -23,14 +25,14 @@ const PostContent: FC<PostItem> = ({ post }) => {
 				const image = node.children[0];
 
 				return (
-					<div className={classes.image}>
+					<Box sx={styles.image}>
 						<Image
 							src={`/images/posts/${post.slug}/${image.properties.src}`}
 							alt={image.alt}
 							width={600}
 							height={300}
 						/>
-					</div>
+					</Box>
 				);
 			}
 
@@ -52,10 +54,10 @@ const PostContent: FC<PostItem> = ({ post }) => {
 	};
 
 	return (
-		<article className={classes.content}>
+		<Paper sx={styles.content}>
 			<PostHeader title={post.title} image={imagePath} />
 			<ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
-		</article>
+		</Paper>
 	);
 };
 

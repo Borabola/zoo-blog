@@ -1,13 +1,20 @@
 import { FC } from "react";
+import { Box, Typography } from "@mui/material";
 import { useIntl } from "react-intl";
-import classes from "./Logo.module.css";
+import { logoStyles as styles } from "./Logo.styles";
 
 const Logo: FC = () => {
 	const intl = useIntl();
-	return <div className={classes.logo}> {intl.formatMessage({
-		id: "mykolaivZooBlog",
-		defaultMessage: "Mykolaiv Zoo Blog"
-	})}</div>;
+	return (
+		<Typography
+			variant="h2"
+			sx={styles.logo}>
+			{intl.formatMessage({
+				id: "mykolaivZooBlog",
+				defaultMessage: "Mykolaiv Zoo Blog"
+			})}
+		</Typography>
+	);
 }
 
 export default Logo;

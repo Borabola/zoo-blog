@@ -1,16 +1,16 @@
 import { FC } from "react";
-import { PostsProps } from "types";
+import { Box } from "@mui/material";
+import { PostsProps, Post } from "types";
 import PostItem from "../PostItem/PostItem";
-import { Post } from "../../../types"
-import classes from "./PostsGrid.module.css";
+import { postGridStyles as styles } from "./PostGrid.styles";
 
 const PostsGrid: FC<PostsProps> = ({ posts }) => {
   return (
-    <ul className={classes.grid}>
+    <Box sx={styles.grid}>
       {posts.map((post: Post) => (
         <PostItem key={post.slug} post={post} />
       ))}
-    </ul>
+    </Box>
   );
 }
 

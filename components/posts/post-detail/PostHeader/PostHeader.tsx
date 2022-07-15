@@ -1,19 +1,25 @@
 import { FC } from "react";
 import Image from "next/image";
-import classes from "./PostHeader.module.css";
+import { Box, Typography } from "@mui/material";
 import { PostHeaderProps } from "./PostHeader.types"
+import { postHeaderStyles as styles } from "./PostHeader.styles";
 
 const PostHeader: FC<PostHeaderProps> = ({ title, image }) => {
 	return (
-		<header className={classes.header}>
-			<h1>{title}</h1>
+		<Box sx={styles.header}>
+			<Typography
+				variant="h1"
+				sx={styles.title}
+			>
+				{title}
+			</Typography>
 			<Image
 				src={image}
 				alt={title}
 				width={200}
 				height={150}
 			/>
-		</header>
+		</Box>
 	);
 };
 
