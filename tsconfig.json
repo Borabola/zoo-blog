@@ -1,4 +1,9 @@
 {
+	"ts-node": {
+		"moduleTypes": {
+			"jest.config.ts": "cjs"
+		}
+	},
 	"compilerOptions": {
 		"baseUrl": "./",
 		"paths": {
@@ -37,7 +42,7 @@
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx"
-	],
+, "jest.config.js"	],
 	"exclude": [
 		"node_modules"
 	]

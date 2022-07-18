@@ -11,6 +11,7 @@ export const Loader: FC<LoaderProps> = ({
 			disableShrink
 			size={size}
 			color={color}
+			data-testid="image"
 		/>
 	);
 };
