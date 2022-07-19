@@ -8,7 +8,6 @@ import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
 import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import PostHeader from "../PostHeader/PostHeader";
 import { PostItem } from "types";
-import classes from "./PostContent.module.css";
 import { postContentStyles as styles } from "./PostContent.styles";
 
 SyntaxHighlighter.registerLanguage("js", js)

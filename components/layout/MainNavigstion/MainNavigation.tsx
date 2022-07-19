@@ -3,9 +3,7 @@ import Link from "next/link";
 import { useIntl } from "react-intl";
 import { Box, MenuList, MenuItem } from "@mui/material";
 import Logo from "../Logo/Logo";
-import classes from "./MainNavigation.module.css";
 import { navigationStyles as styles } from "./MainNavigation.styles"
-
 
 const MainNavigation: FC = () => {
 	const intl = useIntl();

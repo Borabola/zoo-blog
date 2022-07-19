@@ -1,19 +1,16 @@
 import { screen } from "@testing-library/react";
 import { renderWithWrapper } from "../../../lib/testHelper"
-import Hero from "./Hero";
+import Logo from "./Logo";
 describe(
-	"Component: Hero",
+	"Component: MainNavigation",
 	() => {
 		it(
 			"should render correctly ",
 			() => {
 				const { getByText } = renderWithWrapper(
-					<Hero />
+					<Logo />
 				);
-
 				expect(getByText(/Mykolaiv Zoo Blog/i)).toBeInTheDocument();
-				expect(getByText(/The blog about animals and our Zoo/i)).toBeInTheDocument();
-				expect(screen.getByAltText(/Mykolaiv zoo/i)).toBeInTheDocument();
 			}
 		);
 	}
