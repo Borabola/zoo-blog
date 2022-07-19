@@ -1,10 +1,14 @@
 {
 	"allPosts": "All Posts",
 	"contact": "Contact",
+	"featuredPosts": "Featured Posts",
 	"howCanIHelpYou": "How can I help you?",
 	"mykolaivZooBlog": "Mykolaiv Zoo Blog",
 	"sendMessage": "Send Message",
 	"posts": "Posts",
+	"snackbar.sentError": "Error!",
+	"snackbar.sentSuccessfully": "Message sent successfully!",
+	"snackbar.sentPending": "Your message is on its way!",
 	"blogDescription": "The blog about animals and our Zoo"
 }
 

@@ -20,7 +20,6 @@ export const FormFieldText: FC<FormFieldTextProps> = ({
 						fullWidth
 						margin="normal"
 						variant="outlined"
-						//variant={variant}
 						color="primary"
 						error={checkeErrorForMetaField(meta)}
 						helperText={meta.touched ? meta.error : ""}
