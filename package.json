@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
+    "test:coverage": "npm run test -- --coverage",
     "test:ci": "jest --ci"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "@formatjs/intl": "^2.3.1",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.7",
+    "@testing-library/user-event": "^14.3.0",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
     "mongodb": "^4.7.0",
@@ -29,6 +31,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^28.1.5",

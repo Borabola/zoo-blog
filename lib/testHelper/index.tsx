@@ -3,6 +3,7 @@ import {
 } from "react";
 import { render, RenderOptions } from "@testing-library/react"
 import { ThemeProvider } from "@mui/material/styles";
+import { SnackbarProvider } from "notistack";
 import { theme } from "../../theme";
 import AppIntlProvider from "../../hoc/AppIntlProvider"
 
@@ -14,7 +15,9 @@ export const renderWithWrapper = (
 	const Wrapper = ({ children }: PropsWithChildren<Record<string, unknown>>): JSX.Element => (
 				<AppIntlProvider>
 						<ThemeProvider theme={theme}>
-							{children}
+							<SnackbarProvider>
+								{children}
+							</SnackbarProvider>
 						</ThemeProvider>
 				</AppIntlProvider>
 		)

@@ -3,14 +3,12 @@ import Head from "next/head";
 import { useIntl } from "react-intl";
 import { FormikHelpers } from "formik";
 import { Message } from "types";
-import { getIntlTexts } from "../components/contact/ContactForm/ContactForm.text"
-import { sendContactData } from "../components/contact/ContactForm/ContactForm.utils";
-import { useEnqueueSnackbar } from "../hooks/useEnqueueSnackbar/useEnqueueSnackbar";
-
-import ContactForm from "../components/contact/ContactForm/ContactForm";
+import { getIntlTexts } from "../../components/contact/ContactForm/ContactForm.text"
+import { sendContactData } from "../../components/contact/ContactForm/ContactForm.utils";
+import { useEnqueueSnackbar } from "../../hooks/useEnqueueSnackbar/useEnqueueSnackbar";
+import ContactForm from "../../components/contact/ContactForm/ContactForm";
 
 const initialValues: Message = {
-		id: null,
 		email: "",
 		name: "",
 		message: "",
@@ -32,7 +30,6 @@ const ContactPage: FC = () => {
 	const onSubmit = async (
 		values: Message, form: FormikHelpers<Message>
 	) => {
-		console.log("Sending message")
 		enqueueSnackbarInfo(msg.sentInfo);
 		try {
 			await sendContactData({
@@ -49,11 +46,12 @@ const ContactPage: FC = () => {
 
 		form.setSubmitting(false);
 	}
+
   return (
     <>
       <Head>
-        <title>Contact Me</title>
-        <meta name="description" content="Send me your messages!" />
+        <title>Contact Mykolaiv Zoo</title>
+        <meta name="description" content="Send message to Zoo!" />
       </Head>
       <ContactForm
 				initialValues={initialValues}

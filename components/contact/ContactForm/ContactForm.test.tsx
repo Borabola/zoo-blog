@@ -1,26 +1,27 @@
 import {
 	screen, fireEvent, waitFor
 } from "@testing-library/react";
-//import { ObjectId } from "mongodb";
-//import { utf8Encode } from "whatwg-url/lib/encoding";
+import userEvent from '@testing-library/user-event'
 import { renderWithWrapper } from "../../../lib/testHelper"
 import { Message } from "types";
 import ContactForm from "./ContactForm";
 import "@testing-library/jest-dom";
+import { faker } from '@faker-js/faker';
+
+const randomName = faker.name.findName();
+const randomEmail = faker.internet.email();
+const randomMessage = faker.lorem.word();
 
 const initialValues: Message = {
-	id: null,
 	email: "",
 	name: "",
 	message: "",
 }
 
 const initialValues2: Message = {
-	//id: new ObjectId("62d14e8bcf94e1e0eca6436d"),
-	id: null,
-	email: "test@test.com",
-	name: "TestName",
-	message: "Test message",
+	email: randomEmail,
+	name: randomName,
+	message: randomMessage,
 }
 const testSubmit = jest.fn();
 
@@ -53,9 +54,9 @@ describe(
 						onSubmit={testSubmit}
 					/>)
 
-				expect(screen.getByDisplayValue(/test@test.com/i)).toBeInTheDocument();
-				expect(screen.getByDisplayValue(/TestName/i)).toBeInTheDocument();
-				expect(screen.getByDisplayValue(/Test message/i)).toBeInTheDocument();
+				expect(screen.getByDisplayValue(randomEmail)).toBeInTheDocument();
+        expect(screen.getByDisplayValue(randomName)).toBeInTheDocument();
+        expect(screen.getByDisplayValue(randomMessage)).toBeInTheDocument();
 			}
 		);
 		it(
@@ -66,19 +67,19 @@ describe(
 						initialValues={initialValues2}
 						onSubmit={testSubmit}
 					/>)
+				const user = userEvent.setup()
+				//fireEvent.click(screen.getByTestId("submitBtn"));
+				await user.click(screen.getByTestId("submitBtn"))
 
-				fireEvent.click(screen.getByTestId("submitBtn"));
-
-				await waitFor(() =>
-					/*expect(testSubmit).toHaveBeenCalledWith(expect.objectContaining({
-						"email": expect.any(String)
-						/*"email": "test@test.com",
-						"name": "TestName",
-						"message": "Test message",
-					}))*/
+				await waitFor(() => {
+					/*expect(testSubmit).toHaveBeenCalledWith({
+						email: randomEmail,
+						name: randomName,
+						message: randomMessage,
+					})*/
 
 					expect(testSubmit).toHaveBeenCalledTimes(1)
-				)
+				})
 			}
 		)
 	}

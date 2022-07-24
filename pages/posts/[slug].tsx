@@ -5,14 +5,14 @@ import { ContextParams, PostItem } from "types";
 import PostContent from "../../components/posts/post-detail/PostContent/PostContent";
 import { getPostData, getPostsFiles } from "../../lib/posts-util";
 
-const PostDetailPage: FC<PostItem> = (props) => {
+const PostDetailPage: FC<PostItem> = ({ post }) => {
 	return (
 		<>
 			<Head>
-				<title>{props.post.title}</title>
-				<meta name="description" content={props.post.excerpt} />
+				<title>{post.title}</title>
+				<meta name="description" content={post.excerpt} />
 			</Head>
-			<PostContent post={props.post} />
+			<PostContent post={post} />
 		</>
 	);
 }

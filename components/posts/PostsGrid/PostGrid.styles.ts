@@ -7,7 +7,7 @@ export const postGridStyles = {
 		padding: 0,
 		display: "grid",
 		gridTemplateColumns: "repeat(auto-fill, minmax(20rem, 1fr))",
-		gap: (theme: Theme) => theme.spacing(0.75),
+		gap: (theme: Theme) => theme.spacing(4),
 		alignContent: "center",
 	}
 };

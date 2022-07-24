@@ -2,7 +2,6 @@ import { FC } from "react";
 import { useIntl } from "react-intl";
 import { Box, Typography } from "@mui/material";
 import { PostsProps } from "types";
-import classes from "./AllPosts.module.css";
 import PostsGrid from "../PostsGrid/PostsGrid";
 import { allPostsStyles as styles } from "./AllPosts.styles";
 

@@ -4,7 +4,7 @@ import Head from "next/head";
 import { PostsProps } from "types";
 import FeaturedPosts from "../components/home-page/FeaturedPost/FeaturedPosts";
 import Hero from "../components/home-page/Hero/Hero";
-import { getFeaturedPosts } from "../lib/posts-util";
+import { getFeaturedPosts, getAllPosts } from "../lib/posts-util";
 
 const HomePage: FC<PostsProps> = (props) => {
   return (
@@ -20,7 +20,8 @@ const HomePage: FC<PostsProps> = (props) => {
 }
 
 export const getStaticProps: GetStaticProps<PostsProps> = () => {
-  const featuredPosts = getFeaturedPosts();
+	const filteredPosts = getAllPosts()
+  const featuredPosts = getFeaturedPosts(filteredPosts);
 
   return {
     props: {
