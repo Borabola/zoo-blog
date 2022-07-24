@@ -1,12 +1,17 @@
 import { screen } from "@testing-library/react";
+import { faker } from '@faker-js/faker';
 import { renderWithWrapper } from "../../../lib/testHelper";
 import PostItem from "./PostItem";
 
+const randomSlug = faker.lorem.slug();
+const randomTitle = faker.name.findName();
+const randomContent = faker.lorem.paragraph()
+
 const testPost = {
-	title: "Test title 1",
+	title: randomTitle,
 	date: "2022-06-10",
-	slug: "test-title-1",
-	content: "Test content",
+	slug: randomSlug,
+	content: randomContent,
 	isFeatured: true,
 }
 
@@ -20,9 +25,9 @@ describe(
 					<PostItem post={testPost}  />
 				);
 
-				expect(getByText(/Test title 1/i)).toBeInTheDocument();
+				expect(getByText(randomTitle)).toBeInTheDocument();
 				expect(getByText(/June/i)).toBeInTheDocument();
-				expect(screen.getByAltText(/Test title 1/i)).toBeInTheDocument();
+				expect(screen.getByAltText(randomTitle)).toBeInTheDocument();
 			}
 		);
 	}

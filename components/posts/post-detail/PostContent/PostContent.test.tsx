@@ -1,11 +1,16 @@
+import { faker } from '@faker-js/faker';
 import { renderWithWrapper } from "../../../../lib/testHelper"
 import PostContent from "./PostContent";
 
+const randomSlug = faker.lorem.slug();
+const randomTitle = faker.name.findName();
+const randomContent = faker.lorem.paragraph()
+
 const testPost = {
-	title: "Test title 1",
+	title: randomTitle,
 	date: "2022-06-10",
-	slug: "test-title-1",
-	content: "Test content",
+	slug: randomSlug,
+	content: randomContent,
 	isFeatured: true,
 }
 describe(
@@ -18,8 +23,8 @@ describe(
 					<PostContent post={testPost} />
 				);
 
-				expect(getByText(/Test title 1/i)).toBeInTheDocument();
-				expect(getByText(/Test content/i)).toBeInTheDocument();
+				expect(getByText(randomTitle)).toBeInTheDocument();
+				expect(getByText(randomContent)).toBeInTheDocument();
 			}
 		);
 	}

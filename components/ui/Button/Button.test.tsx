@@ -1,6 +1,9 @@
 import { render } from "@testing-library/react";
+import { faker } from '@faker-js/faker';
 import { Button } from "./Button";
 import "@testing-library/jest-dom";
+
+const randomText = faker.lorem.word()
 
 describe(
 	"Component: Button",
@@ -17,10 +20,10 @@ describe(
 						data-testid="submitBtn"
 						isLoading={false}
 					>
-						Test Button
+						{randomText}
 					</Button>);
 
-				expect(getByText(/Test Button/i)).toBeInTheDocument();
+				expect(getByText(randomText)).toBeInTheDocument();
 			}
 		);
 		it(
