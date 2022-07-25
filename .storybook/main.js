@@ -6,7 +6,8 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
+		"@bbbtech/storybook-formik/register"s
   ],
   "framework": "@storybook/react",
   "core": {
