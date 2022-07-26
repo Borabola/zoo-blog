@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { ContextParams, PostItem } from "types";
+import { ContextParams, PostItemProps } from "types";
 import PostContent from "../../components/posts/post-detail/PostContent/PostContent";
 import { getPostData, getPostsFiles } from "../../lib/posts-util";
 
-const PostDetailPage: FC<PostItem> = ({ post }) => {
+const PostDetailPage: FC<PostItemProps> = ({ post }) => {
 	return (
 		<>
 			<Head>
@@ -17,7 +17,7 @@ const PostDetailPage: FC<PostItem> = ({ post }) => {
 	);
 }
 
-export const getStaticProps: GetStaticProps<PostItem, ContextParams> = (context) => {
+export const getStaticProps: GetStaticProps<PostItemProps, ContextParams> = (context) => {
 	const { params } = context;
 	const { slug } = params;
 
