@@ -2,10 +2,10 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Box, Typography } from "@mui/material";
-import { PostItem } from "../../../types";
+import { PostItemProps } from "../../../types";
 import { postItemStyles as styles } from "./PostItem.styles"
 
-const PostItem: FC<PostItem> = ({ post } ) => {
+export const PostItem: FC<PostItemProps> = ({ post } ) => {
 	const { title, image, excerpt, date, slug } = post;
 	const formattedDate = new Date(date).toLocaleDateString("en-US", {
 		day: "numeric",

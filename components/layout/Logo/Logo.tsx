@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useIntl } from "react-intl";
 import { logoStyles as styles } from "./Logo.styles";
 
-const Logo: FC = () => {
+export const Logo: FC = () => {
 	const intl = useIntl();
 	return (
 		<Typography

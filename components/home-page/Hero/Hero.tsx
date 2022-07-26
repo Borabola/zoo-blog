@@ -3,9 +3,9 @@ import { Box, Typography } from "@mui/material";
 import { useIntl } from "react-intl";
 import { heroStyles as styles } from "./Hero.styles";
 
-const Hero = () => {
+export const Hero = () => {
 	const intl = useIntl();
-	
+
 	return (
 		<Box sx={styles.hero}>
 			<Box sx={styles.image}>

@@ -1,14 +1,14 @@
 export type Post = {
-	title?: string,
-	image?: string,
-	excerpt?: string,
+	title: string,
 	date: string,
 	slug: string,
+	image?: string,
+	excerpt?: string,
 	content?: string,
 	isFeatured?: boolean
 };
 
-export type PostItem = {
+export type PostItemProps = {
 	post: Post
 };
 

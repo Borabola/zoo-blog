@@ -9,6 +9,9 @@ export const navigationStyles = {
 		justifyContent: "space-between",
 		alignItems: "center",
 		padding: "0 10%",
+		"& a": {
+  		textDecoration: "none",
+		},
 	},
 	menu: {
 		listStyle: "none",

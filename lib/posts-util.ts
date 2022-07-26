@@ -19,6 +19,7 @@ export const getPostData = (postIdentifier: string) => {
   const postData: Post = {
     slug: postSlug,
     content,
+		title: data.title,
 		date: data.date,
 		...data,
   };

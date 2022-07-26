@@ -5,7 +5,7 @@ import { Box, MenuList, MenuItem } from "@mui/material";
 import Logo from "../Logo/Logo";
 import { navigationStyles as styles } from "./MainNavigation.styles"
 
-const MainNavigation: FC = () => {
+export const MainNavigation: FC = () => {
 	const intl = useIntl();
 	return (
 		<Box sx={styles.header}>

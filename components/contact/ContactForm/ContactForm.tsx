@@ -8,7 +8,7 @@ import { validateShema } from "./ContactForm.schema";
 import { contactFormStyles } from "./ContactFom.styles";
 import { ContactFormProps } from "./ContactForm.types"
 
-const ContactForm: FC<ContactFormProps> = ({
+export const ContactForm: FC<ContactFormProps> = ({
 	initialValues,
 	onSubmit
 }) => {
