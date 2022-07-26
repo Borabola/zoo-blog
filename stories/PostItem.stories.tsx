@@ -4,6 +4,15 @@ import { theme } from "../theme";
 import AppIntlProvider from "../hoc/AppIntlProvider"
 import { PostItem } from "../components/posts/PostItem/PostItem";
 
+const testPost = {
+	title: "Item Title",
+	date: "2022-06-10",
+	slug: "storybook-post-item",
+	image: "/post.jpg",
+	content: "Test content",
+	excerpt: "Test excerpt",
+	isFeatured: true,
+}
 export default {
 	title: 'component/post/PostItem',
 	component: PostItem,
@@ -12,29 +21,14 @@ export default {
 const Template: ComponentStory<typeof PostItem> = (args) => (
 	<AppIntlProvider>
 		<ThemeProvider theme={theme}>
-			<div style={{
-				background: "blue",
-				width: "100px",
-				height: "100px",
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center"
-			}}>
 				<PostItem {...args} />
-			</div>
 		</ThemeProvider>
 	</AppIntlProvider>
 );
 
 export const Basic = Template.bind({});
 Basic.args = {
-	title: "Item Title",
-	date: "2022-06-10",
-	slug: "storybook-post-item",
-	image: "/post.jpg",
-	content: "Test content",
-	excerpt: "Test excerpt",
-	isFeatured: true,
+	post: testPost
 };
 
 

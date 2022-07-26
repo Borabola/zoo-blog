@@ -5,7 +5,7 @@ import { PostsProps } from "types";
 import PostsGrid from "../../posts/PostsGrid/PostsGrid";
 import { featuredPostStyles as styles } from "./FeaturedPosts.styles";
 
-const FeaturedPosts: FC<PostsProps> = ({ posts }) => {
+export const FeaturedPosts: FC<PostsProps> = ({ posts }) => {
 	const intl = useIntl();
 
 	return (

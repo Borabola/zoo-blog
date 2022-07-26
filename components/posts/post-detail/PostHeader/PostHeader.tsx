@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { PostHeaderProps } from "./PostHeader.types"
 import { postHeaderStyles as styles } from "./PostHeader.styles";
 
-const PostHeader: FC<PostHeaderProps> = ({ title, image }) => {
+export const PostHeader: FC<PostHeaderProps> = ({ title, image }) => {
 	return (
 		<Box sx={styles.header}>
 			<Typography

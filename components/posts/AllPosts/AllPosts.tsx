@@ -5,7 +5,7 @@ import { PostsProps } from "types";
 import PostsGrid from "../PostsGrid/PostsGrid";
 import { allPostsStyles as styles } from "./AllPosts.styles";
 
-const AllPosts: FC<PostsProps> = ({ posts }) => {
+export const AllPosts: FC<PostsProps> = ({ posts }) => {
 	const intl = useIntl();
 	return (
 		<Box sx={styles.posts}>

@@ -13,7 +13,7 @@ import { postContentStyles as styles } from "./PostContent.styles";
 SyntaxHighlighter.registerLanguage("js", js)
 SyntaxHighlighter.registerLanguage("css", css);
 
-const PostContent: FC<PostItemProps> = ({ post }) => {
+export const PostContent: FC<PostItemProps> = ({ post }) => {
 	const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
 	const customRenderers: {[nodeType: string]: ElementType} = {
