@@ -12,7 +12,6 @@ describe("Post utils functions", () => {
 	}];
 	test("getFeaturedPosts should filtered correctly ", () => {
         expect(getFeaturedPosts(testPosts)).toEqual(expect.arrayContaining(expected));
-
 })
 })
 

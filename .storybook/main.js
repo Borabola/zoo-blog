@@ -9,7 +9,8 @@ module.exports = {
 		"@storybook/addon-interactions",
 		"@bbbtech/storybook-formik/register",
 	],
-	//staticDirs: ["../public"],
+	staticDirs: ["../public"],
+	//staticDirs: [{ from: "../public/images", to: "/_next" }],
 	framework: "@storybook/react",
 	core: {
 		builder: "@storybook/builder-webpack5",

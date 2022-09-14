@@ -1,6 +1,6 @@
 import { testPosts } from "../../__mock__/posts";
 import { renderWithWrapper } from "../../lib/testHelper"
-import AllPostsPage from "./index";
+import AllPostsPage from "./index.page";
 
 describe(
 	"Page: Home: AllPosts",

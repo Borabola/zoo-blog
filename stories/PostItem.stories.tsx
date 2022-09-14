@@ -8,7 +8,7 @@ const testPost = {
 	title: "Item Title",
 	date: "2022-06-10",
 	slug: "storybook-post-item",
-	image: "/post.jpg",
+	image: "../__mock__/images/test1.jpg",
 	content: "Test content",
 	excerpt: "Test excerpt",
 	isFeatured: true,

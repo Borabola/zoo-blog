@@ -1,7 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import { renderWithWrapper } from "../lib/testHelper"
 import { testPosts } from "../__mock__/posts";
-import HomePage from "./index";
+import HomePage from "./index.page";
 describe(
 	"Page: HomePage",
 	() => {

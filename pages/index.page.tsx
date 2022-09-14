@@ -6,7 +6,7 @@ import FeaturedPosts from "../components/home-page/FeaturedPost/FeaturedPosts";
 import Hero from "../components/home-page/Hero/Hero";
 import { getFeaturedPosts, getAllPosts } from "../lib/posts-util";
 
-const HomePage: FC<PostsProps> = (props) => {
+export const HomePage: FC<PostsProps> = (props) => {
   return (
 		<>
 			<Head>

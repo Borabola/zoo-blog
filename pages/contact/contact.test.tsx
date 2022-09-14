@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import { renderWithWrapper } from "../../lib/testHelper"
-import ContactPage from "./index";
+import ContactPage from "./index.page";
 
 const testPost = {
 		title: "Test title 1",
@@ -27,7 +27,6 @@ describe(
 				expect(screen.getByText(
 					/Send Message/i,
 				)).toBeInTheDocument();
-
 			}
 		);
 	}

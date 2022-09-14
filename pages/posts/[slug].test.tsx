@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import { renderWithWrapper } from "../../lib/testHelper"
-import PostDetailPage from "./[slug]";
+import PostDetailPage from "./[slug].page";
 
 const testPost = {
 		title: "Test title 1",
